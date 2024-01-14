@@ -1,0 +1,208 @@
+{
+  "时光农场": {
+    "00   种时光作物": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Note": "土地状态1播种  2发芽  3小叶  4大叶  5初熟   6成熟   7枯萎  0无农作物\r\n1：化肥任务请在13项自行设置\r\n2：普通作物id请在999-5项自行修改\r\n3：普通作物默认种植牧草\r\n4：999-94可以对作物果实进行加锁解锁",
+      "Msg": "farmlandstatus*b==0??landid",
+      "MsgOut": "farmlandstatus*b==0??landid",
+      "Time": "300",
+      "End": "登;key;繁;未;无;{999-1}",
+      "Today": 3
+    },
+    "01   查作物是否枯萎": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Note": "土地状态1播种  2发芽  3小叶  4大叶  5初熟   6成熟   7枯萎  0无农作物",
+      "Msg": "farmlandstatus*b==7??landid",
+      "MsgOut": "farmlandstatus*b==7??landid",
+      "Time": "300",
+      "End": "登;key;繁;未;无;{999-2}",
+      "Today": 3
+    },
+    "03   查作物是否成熟": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Note": "土地状态1播种  2发芽  3小叶  4大叶  5初熟   6成熟   7枯萎  0无农作物",
+      "Msg": "farmlandstatus*b==6??landid",
+      "MsgOut": "farmlandstatus*b==6??landid",
+      "Time": "300",
+      "End": "登;key;繁;未;无;{999-3}",
+      "Today": 3
+    },
+    "05   访问商店": {
+      "Url": "nc.qzone.qq.com/cgi-bin/query?",
+      "Post": "act=2280001&shopid=1",
+      "Note": "curnum已购买次数\r\nlimitmax购买次数",
+      "Msg": "curnum",
+      "End": "登;key;繁;未;无;不{07};<20{999-4};>=20{07}"
+    },
+    "06   查时光种子数量": {
+      "Url": "farm.qzone.qq.com/cgi-bin/cgi_farm_getuserseed?",
+      "Post": "mod=repertory&act=getUserSeed&g_tk=1572417590",
+      "Msg": "cId=6085??amount",
+      "MsgOut": "cId=6085??amount",
+      "End": ">0{05}"
+    },
+    "07   种植普通作物": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Msg": "farmlandstatus*b==0??landid",
+      "MsgOut": "farmlandstatus*b==0??landid",
+      "Time": "500",
+      "End": "登;key;繁;未;无;{999-5}"
+    },
+    "08   查时光果实数量": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_getusercrop?",
+      "Post": "f=1&g_tk=1572417590",
+      "Msg": "crop*cId=6085??amount",
+      "MsgOut": "crop*cId=6085??amount",
+      "End": "登;key;繁;未;无;>0{999-6}"
+    },
+    "09   查任务@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=querytask&g_tk=90504314",
+      "Note": "1   购买时光种子     数量10次\n       \r\n2   收获时光作物     数量10次\n       \r\n3   收货普通作物     数量10次\n       \r\n4   种植时光种子     数量10次\n       \r\n5   种植普通种子     数量10次\n       \r\n6   铲地             数量10次    普通作物没熟铲了也算\n       \r\n7   使用普通化肥     数量3次",
+      "Msg": "tasks*id#任务id&&count#已完成次数",
+      "Time": "00:01",
+      "End": "登;key;繁;未;无",
+      "Today": 2
+    },
+    "10   查银子数   查等级": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Note": "exp        升级所需经验\r\nremainexp  当前经验",
+      "Msg": "timemoney#银子余额&&level#等级"
+    },
+    "11   领奖励": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=gettaskaward&taskid={*:1~7}",
+      "Msg": "pkg*name&&num",
+      "Time": "21:00,22:00",
+      "Today": 2
+    },
+    "12   扩地": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=newland&g_tk=973306009",
+      "Msg": "ecode",
+      "Time": "21:00,22:00",
+      "End": "登;key;繁;未;无"
+    },
+    "13   种子施肥任务   【需自行设置】": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=querytask&g_tk=90504314",
+      "Note": "本项设置循环或定时即可",
+      "Msg": "tasks*id=7??count",
+      "MsgOut": "tasks*id=7??count",
+      "Time": "00:01",
+      "End": "登;key;繁;未;无;<3{999-7}"
+    },
+    "14   VIP黄钻买普通化肥  【手动】": {
+      "Url": "farm.qzone.qq.com/cgi-bin/cgi_farm_tool_vip?",
+      "Post": "buytype=1&itemId=1&itemNum=1",
+      "Note": "itemNum  化肥数量\r\nitemId   化肥id",
+      "Time": "21:00,22:00",
+      "End": "登;key;繁;未;无;不"
+    },
+    "666   -----------------------------------------": {
+      "Time": "500"
+    },
+    "999-1   种植时光作物@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=plant&cropid=6085&landid={*:[msg]}",
+      "Msg": "farmlandstatus*a#种植id",
+      "End": "登;key;繁;未;无;不{05}",
+      "Cycle": 2
+    },
+    "999-2   铲地@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=dig&landid={*:[msg]}",
+      "Msg": "ecode",
+      "End": "登;key;繁;未;无;不;{*:00}"
+    },
+    "999-3   一键收获@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=batchharvest&g_tk=1572417590",
+      "Note": "shopid   商店id时光商店",
+      "Msg": "farmlandstatus*k#收获作物数量",
+      "End": "登;key;繁;未;无;收{01}"
+    },
+    "999-4   买种子@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/exchange?",
+      "Post": "act=2280002&shopid=1&buycount=1&buyid=1",
+      "Note": "shopid   商店id时光商店\r\nbuycount   种子数量",
+      "Msg": "code",
+      "MsgOut": "code",
+      "End": "登;key;繁;未;无;上{00};不{08};-2{00}",
+      "Cycle": 6
+    },
+    "999-5   种植普通作物@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=plant&cropid=40&landid={*:[msg]}",
+      "Note": "cropid=等于作物id\r\n999-9和999-91里的id同样修改",
+      "Msg": "farmlandstatus*a#种植id",
+      "End": "登;key;繁;未;无;有;不{999-91}",
+      "Cycle": 2
+    },
+    "999-6   卖时光果实@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=sell&type=1&cropid=6085&num={*:[msg]}",
+      "Note": "num数量",
+      "Msg": "ecode",
+      "End": "登;key;繁;未;无;不{01}"
+    },
+    "999-7   判断是否普通作物@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=index",
+      "Msg": "farmlandstatus*b>0&&a<6085??landid",
+      "MsgOut": "farmlandstatus*b>0&&a<6085??landid",
+      "Time": "500",
+      "End": "登;key;繁;未;无;{999-8}"
+    },
+    "999-8   普通作物施肥@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_time_space?",
+      "Post": "act=fertilize&toolid=1&landid={*:[msg]}",
+      "Msg": "ecode",
+      "Time": "500",
+      "End": "登;key;繁;未;无"
+    },
+    "999-9   买普通作物种子@@": {
+      "Url": "farm.qzone.qq.com/cgi-bin/cgi_farm_buyseed?mod=repertory&",
+      "Post": "act=buySeed&cId=40&number=10",
+      "Msg": "num",
+      "Time": "500",
+      "End": "登;key;繁;未;无;不{999-93};{07}"
+    },
+    "999-91  查普通种子数量@@": {
+      "Url": "farm.qzone.qq.com/cgi-bin/cgi_farm_seed_list?",
+      "Post": "{nc}",
+      "Msg": "cId==40??amount",
+      "MsgOut": "cId==40??amount",
+      "End": "登;key;繁;未;无{999-9};>0{07}"
+    },
+    "999-92  卖普通作物@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_sale?",
+      "Post": "mod=repertory&act=sale&hw=1&onlineTime=0&cId=40&number={*:[msg]}",
+      "Msg": "direction",
+      "MsgOut": "direction",
+      "Time": "500",
+      "End": "登;key;繁;未;无;不;锁{999-94};成{999-9}"
+    },
+    "999-93  查普通作物果实数量@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_getusercrop?",
+      "Post": "f=1&g_tk=1572417590",
+      "Msg": "crop*cId=40??amount",
+      "MsgOut": "crop*cId=40??amount",
+      "End": "登;key;繁;未;无;>0{999-92}"
+    },
+    "999-94  普通作物解锁（加锁）@": {
+      "Url": "farm.qzone.qq.com/cgi-bin/cgi_farm_set_lock?",
+      "Post": "crop=40:2",
+      "Note": "加锁把post项2改为1即可\r\n等号后面是作物id\r\n手动解锁删除跳转条件，不然会跳转卖果实",
+      "Msg": "isLock",
+      "MsgOut": "isLock",
+      "Time": "500",
+      "End": "登;key;繁;未;无;不;2{999-93}"
+    }
+  }
+}

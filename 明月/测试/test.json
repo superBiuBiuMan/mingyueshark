@@ -1,0 +1,262 @@
+{
+  "牧场-收获时光(秋叶)":{
+    "00-1查询基本信息":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14index",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3",
+      "Msg":"tool#抽奖券&&tool1#奇遇积分&&tool2#活跃积分",
+      "MsgOut":"tool#抽奖券&&tool1#奇遇积分&&tool2#活跃积分",
+      "End": "登;不"
+    },
+    "00-2领取活跃任务奖励":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14drawtask",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id={*.1-60}",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "00-3每日免费礼包":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14buy",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=1",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "00-4 200%返利礼包购买(限购一次)":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14buy",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=2",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "01-00############抽奖相关############":{} ,
+    "01-1抽奖*1次,消耗抽奖券*1":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14draw",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&type=1",
+      "Msg":"items??;s",
+      "MsgOut":"items??;s",
+      "End": "登;不"
+    },
+    "01-2抽奖*10次,消耗抽奖券*10":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14draw",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&type=2",
+      "Msg":"items??;s",
+      "MsgOut":"items??;s",
+      "End": "登;不"
+    },
+    "01-3领取累抽奖励":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14cal",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=1",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "02-00############活跃商店兑换############":{} ,
+    "02-01兑换初.骑士攻击*10-消耗3000活跃积分-限购3":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=15",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换初.骑士防血*10-消耗活跃积分3000-限购3":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=16",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换初.骑士速度*10-消耗活跃积分3000-限购3":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=17",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换牛奶*5-消耗活跃积分250-限购50":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=18",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换鸡腿*10-消耗活跃积分100-限购60":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=19",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换状元红*5-消耗活跃积分500-限购50":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=20",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换高粱酒*10-消耗活跃积分200-限购60":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=21",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换结义帖*1-消耗活跃积分600-限购60":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=22",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换粮食*20万-消耗活跃积分200-限购150":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=23",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换木材*1万-消耗活跃积分200-限购100":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=24",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "############奇遇商店############":{
+
+    } ,   
+    "兑换乐进(将魂*1)-消耗60奇遇积分-限购50":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=1",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换乐进(将魂*10)-消耗600奇遇积分-限购500":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=2",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换金刚披风(近)*1-消耗300奇遇积分-限购20":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=3",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "01-00兑换金刚披风(远)*1-消耗300奇遇积分-限购20":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=4",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "01-00兑换金刚披风(骑)*1-消耗300奇遇积分-限购20":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=5",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "01-00兑换紫霄披风(近)*1-消耗60奇遇积分-限购30":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=6",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换紫霄披风(远)*1-消耗60奇遇积分-限购30":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=7",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换紫霄披风(骑)*1-消耗60奇遇积分-限购30":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=8",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换高.重骑侵袭*10-消耗5400奇遇积分-限购1":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=9",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换高.骑士攻击*10-消耗1200奇遇积分-限购10":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=10",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "兑换高.骑士防血*10-消耗1200奇遇积分-限购3":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=11",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "2-2-2兑换高.骑士速度*10-消耗1200奇遇积分-限购3":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=12",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "1-1-1兑换聚灵石*1-消耗30奇遇积分-限购50":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=13",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "0-0-0兑换精钢*100-消耗10奇遇积分-限购300":{
+      "Url":"{!mc}cgi_pasture_kingdoms_activity?act=a14ex",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=14",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    }
+  }
+}
+
+
+
+
+

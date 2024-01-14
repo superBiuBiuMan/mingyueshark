@@ -1,0 +1,140 @@
+﻿{
+  "农守护魔化": {
+    "00查看黑魔晶": {
+      "Url": "{!nc}cgi_farm_get_virtualtools",
+      "Post": "{ncs}",
+      "Msg": "id==2412??num@0",
+      "MsgOut": "direction;id==2412??num@0"
+    },
+    "00直接魔化": {
+      "Url": "{!nc}exchange",
+      "Post": "{ncs}&act=2010015&index=",
+      "Note": "index=页面序列#id",
+      "Msg": "direction;pkg??;pkg",
+      "MsgOut": "direction;pkg??;pkg",
+      "Task": 10
+    },
+    "17查貂蝉并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "50黑魔晶",
+      "Msg": "hero*heroId==17??heroIndex#位",
+      "MsgOut": "hero*heroId==17??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "24查天神赵云并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "100黑魔晶",
+      "Msg": "hero*heroId==24??heroIndex#位",
+      "MsgOut": "hero*heroId==24??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "25查战神吕布并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "200黑魔晶",
+      "Msg": "hero*heroId==25??heroIndex#位",
+      "MsgOut": "hero*heroId==25??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "26查武圣关云长并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "96黑魔晶",
+      "Msg": "hero*heroId==26??heroIndex#位",
+      "MsgOut": "hero*heroId==26??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "27查昭烈刘玄德并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "50黑魔晶",
+      "Msg": "hero*heroId==27??heroIndex#位",
+      "MsgOut": "hero*heroId==27??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "28查燕人张翼德并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "50黑魔晶",
+      "Msg": "hero*heroId==28??heroIndex#位",
+      "MsgOut": "hero*heroId==28??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "32查武王曹孟德并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Msg": "hero*heroId==32??heroIndex#位",
+      "MsgOut": "hero*heroId==32??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "33查江东周公瑾并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "100黑魔晶",
+      "Msg": "hero*heroId==33??heroIndex#位",
+      "MsgOut": "hero*heroId==33??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "34查卧龙诸葛孔明并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "200黑魔晶",
+      "Msg": "hero*heroId==34??heroIndex#位",
+      "MsgOut": "hero*heroId==34??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "35查魔王董卓并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "260黑魔晶",
+      "Msg": "hero*heroId==35??heroIndex#位",
+      "MsgOut": "hero*heroId==35??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "42查司马懿并魔": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "80黑魔晶",
+      "Msg": "hero*heroId==42??heroIndex#位",
+      "MsgOut": "hero*heroId==42??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "83查魅并进阶": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Note": "235黑魔晶",
+      "Msg": "hero*heroId==83??heroIndex#位",
+      "MsgOut": "hero*heroId==83??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "92查魑并进阶": {
+      "Url": "{!nc}query",
+      "Post": "act=2010001",
+      "Msg": "hero*heroId==92??heroIndex#位",
+      "MsgOut": "hero*heroId==92??heroIndex",
+      "End": "无;位{99}",
+      "Task": 10
+    },
+    "99自动魔化": {
+      "Url": "{!nc}exchange",
+      "Post": "{ncs}&act=2010015&index={*:[msg]}",
+      "Msg": "direction;pkg??;pkg",
+      "MsgOut": "direction;pkg??;pkg",
+      "Task": 10
+    }
+  }
+}

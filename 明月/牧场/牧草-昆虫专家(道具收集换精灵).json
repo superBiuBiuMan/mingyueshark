@@ -1,0 +1,44 @@
+{
+  "牧场-昆虫专家(道具收集换精灵)":{
+    "00查看道具信息":{
+      "Url":"{!nc}query?act=9999001",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=1",
+      "Msg":"vt2916#A道具&&vt2917#B道具&&l_amt#消费",
+      "MsgOut":"vt2916#A道具&&vt2917#B道具",
+      "End": "登;不"
+    },
+    "01兑换欢乐礼包(A道具20,B道具40)":{
+      "Url":"{!nc}exchange?act=9999003",
+      "Note":"A道具20,B道具40,限兑换5次,秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=1",
+      "Msg":"pkg??;direction",
+      "MsgOut":"pkg??;direction",
+      "End": "登;不"
+    },
+    "02兑换幸运礼包(A道具40,B道具80)":{
+      "Url":"{!nc}exchange?act=9999003",
+      "Note":"A道具40,B道具80,限兑换5次,秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=2",
+      "Msg":"pkg??;direction",
+      "MsgOut":"pkg??;direction",
+      "End": "登;不"
+    },
+    "03兑换SS精灵":{
+      "Url":"{!nc}exchange?act=9999003",
+      "Note":"A道具180,B道具240,限兑换4次,秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id=3",
+      "Msg":"s;direction",
+      "MsgOut":"s;direction",
+      "End": "登;不"
+    },
+    "04领取消费礼包":{
+      "Url":"{!nc}exchange?act=9999002",
+      "Note":"消费礼包领取,土豪专用~秋叶(zmqdream@qq.com)",
+      "Post":"{Mc}&&uIdx&pays=3&id={*:1~8}",
+      "Msg":"s;direction;pkg??",
+      "MsgOut":"s;direction;pkg??",
+      "End": "登"
+    }
+  }
+}

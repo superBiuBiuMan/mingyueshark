@@ -1,0 +1,1 @@
+{"牧场-收获时光(秋叶)":{"00领取任务奖励":{"Url":"{!mc}cgi_pasture_kingdoms_activity?act=a16task","Note":"秋叶(zmqdream@qq.com)","Post":"{Mc}&&uIdx&pays=3&id={*:1~10}","Msg":"s","MsgOut":"s","End":"登"},"01领取签到奖励":{"Url":"{!mc}cgi_pasture_kingdoms_activity?act=a16draw","Note":"秋叶(zmqdream@qq.com)","Post":"{Mc}&&uIdx&pays=3&id={*:1~7}","Msg":"s","MsgOut":"s","End":"登"}}}

@@ -1,0 +1,12 @@
+{
+  "自定义":{
+    "修改信息":{
+      "Url":"{!nc}cgi_farm_opt?mod=setting&act=water_b&do=save",
+      "Note":"秋叶(zmqdream@qq.com)",
+      "Post":"{Ncs}&&uIdx&pays=3&type=weed_a&value=测试是否正常",
+      "Msg":"",
+      "MsgOut":"",
+      "End": "登;不"
+    }
+  }
+}

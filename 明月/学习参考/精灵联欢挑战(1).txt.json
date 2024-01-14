@@ -1,0 +1,56 @@
+{
+  "00牧 精灵联欢挑战(天空)": {
+    "00登老农 (每天)": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=index",
+      "Note": "11月23日——11月29日\r\n\r\n\r\n1 = ok",
+      "Msg": "code",
+      "MsgOut": "code",
+      "End": "登;K;==1",
+      "Cycle": -1,
+      "Task": 20
+    },
+    "01个人任务奖励": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=a15drawtask&id={*:1~42}",
+      "Note": "登;K;不;X\r\n\r\n登;K",
+      "Msg": "direction;s",
+      "MsgOut": "direction;s",
+      "End": "登;K;不",
+      "Task": 20
+    },
+    "02家族团队任务奖励": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=a15drawtask&id={*:43~59,60}",
+      "Msg": "direction;s",
+      "MsgOut": "direction;s",
+      "End": "登;K;未加",
+      "Task": 20
+    },
+    "03积分礼包": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=a15drawcum&id={*:1~4}",
+      "Note": "10,20,35,50分",
+      "Msg": "direction;s",
+      "MsgOut": "direction;s",
+      "End": "登;K;不",
+      "Task": 20
+    },
+    "04排行榜礼包": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=a15rank&type=2",
+      "Msg": "direction;s",
+      "MsgOut": "direction;s",
+      "End": "登;K;不",
+      "Task": 20
+    },
+    "10查看积分": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=a15index",
+      "Msg": "score#积分",
+      "MsgOut": "score#积分",
+      "End": "登;K",
+      "Task": 20
+    }
+  }
+}

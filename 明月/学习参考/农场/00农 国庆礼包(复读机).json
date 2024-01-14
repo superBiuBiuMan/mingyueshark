@@ -1,0 +1,1 @@
+{"00农 国庆礼包(复读机)":{"00 查看":{"Url":"{!nc}query","Post":"{ncs}&act=2040001","Note":"..\r\n1 = 领过了","Msg":"l_limit","MsgOut":"l_limit","End":"登;KEY;==0{01};==1","Cycle":5,"Task":10},"01领礼包(限一次)":{"Url":"{!nc}exchange","Post":"{ncs}&act=2040002&id=1","Msg":"direction;pkg??","MsgOut":"direction;pkg??","End":"登;KEY;x;X;已","Cycle":-1,"Task":10}}}

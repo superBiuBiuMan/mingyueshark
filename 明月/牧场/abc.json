@@ -1,0 +1,46 @@
+{
+    "一键刷新3星小仙": {
+        "01【3星小仙女300%】@": {
+            "Url": "http://nc.qzone.qq.com/cgi-bin/cgi_farm_sx_ref??g_tk",
+            "Post": "{Nc}&&uinY&&uIdx",
+            "Note": "适用于2013-08-22日之后的明月版本\r\n\r\n【30 符合标识,已中断处理】代表成功  之后进空间手动购买\r\n【按需选择单项，单独执行】",
+            "End": "30",
+            "Msg": "id\":92001??rate",
+            "MsgOut": "id\":92001??rate",
+            "Cycle": 2000
+        },
+        "02【3星土地公300%】@": {
+            "Url": "http://nc.qzone.qq.com/cgi-bin/cgi_farm_sx_ref??g_tk",
+            "Post": "{Nc}&&uinY&&uIdx",
+            "Note": "适用于2013-08-22日之后的明月版本\r\n\r\n【30 符合标识,已中断处理】代表成功  之后进空间手动购买\r\n【按需选择单项，单独执行】",
+            "End": "30",
+            "Msg": "id\":92002??rate",
+            "MsgOut": "id\":92002??rate",
+            "Cycle": 2000
+        },
+        "03【3星财神300%】@": {
+            "Url": "http://nc.qzone.qq.com/cgi-bin/cgi_farm_sx_ref??g_tk",
+            "Post": "{Nc}&&uinY&&uIdx",
+            "Note": "适用于2013-08-22日之后的明月版本\r\n\r\n【30 符合标识,已中断处理】代表成功  之后进空间手动购买\r\n【按需选择单项，单独执行】",
+            "End": "30",
+            "Msg": "id\":92003??rate",
+            "MsgOut": "id\":92003??rate",
+            "Cycle": 2000
+        },
+        "04【（3星仙皇250%）！！黄钻购买！！】@": {
+            "Url": "http://nc.qzone.qq.com/cgi-bin/cgi_farm_sx_ref??g_tk",
+            "Post": "{Nc}&&uinY&&uIdx",
+            "Note": "适用于2013-08-22日之后的明月版本\r\n\r\n【25 符合标识,已中断处理】代表成功  之后进空间手动购买\r\n【按需选择单项，单独执行】",
+            "End": "25",
+            "Msg": "id\":92004??rate",
+            "MsgOut": "id\":92004??rate",
+            "Cycle": 2000
+        },
+        "10查看当前各小仙（星级与百分比）【备用】@": {
+            "Url": "http://nc.qzone.qq.com/cgi-bin/cgi_farm_sx_list??g_tk",
+            "Post": "{Nc}&&uinY&&uIdx",
+            "Note": "{小仙id       星级    百分比}\r\n{\"id\":92001,\"lv\":3,\"rate\":30}【3星小仙女300%】\r\n{\"id\":92002,\"lv\":3,\"rate\":30}【3星土地公300%】\r\n{\"id\":92003,\"lv\":3,\"rate\":30}【3星财神300%】\r\n{\"id\":92004,\"lv\":3,\"rate\":25}【（3星仙皇250%）！黄钻购买！】",
+            "Msg": "item"
+        }
+    }
+}

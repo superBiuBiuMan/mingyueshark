@@ -1,0 +1,1 @@
+{"00农_晶钻招财猫(星宇)":{"00 查看->招财（一键执行）":{"Url":"{!nc}query","Post":"{ncs}&act=2109001","Note":"2021.09.30-2021.10.07","Msg":"direction;l_level#当前等级","MsgOut":"direction;l_level#当前等级","End":"登;不;级+","Task":13},"01 开始招财":{"Url":"{!nc}exchange","Post":"act=2109002&id=1","Msg":"direction;add#当前幸运值","MsgOut":"direction;add#当前幸运值","End":"登;不","Cycle":-1,"Task":13}}}

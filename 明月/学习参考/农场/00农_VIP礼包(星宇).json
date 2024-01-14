@@ -1,0 +1,22 @@
+{
+  "00农_VIP礼包(星宇)": {
+    "00 查看->领取": {
+      "Url": "nc.qzone.qq.com/cgi-bin/query",
+      "Post": "{ncs}&act=2154001",
+      "Note": "2021.12.23-2021.12.30\r\n不是VIP可以洗洗睡了",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;不;0+",
+      "Task": 15
+    },
+    "01 领取惊喜礼包@@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/exchange",
+      "Post": "{ncs}&act=2154002&id=1",
+      "Msg": "direction;pkg??",
+      "MsgOut": "direction;pkg??",
+      "End": "登;不;已",
+      "Cycle": -1,
+      "Task": 15
+    }
+  }
+}

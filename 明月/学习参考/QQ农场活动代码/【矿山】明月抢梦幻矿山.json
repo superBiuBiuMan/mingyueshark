@@ -1,0 +1,189 @@
+{
+  "手农 明月搜索梦幻矿山": {
+    "00-2 查看展示矿山@": {
+      "Url": "{!nc}cgi_distant_mine",
+      "Post": "{ncs}&act=index",
+      "Note": "铜矿山1级id = 1300   1300~1303  1到4级\n\r\n银矿山1级id = 1304   1304~1307  1到4级\n\r\n金矿山1级id = 1308   1308~1311  1到4级\n\r\n钛矿山1级id = 1312   1312~1315  1到4级\r\n\n财宝山1级id = 1316   1316~1319  1到4级",
+      "Msg": "common_list*mineId#矿山类型&&uin#QQ号",
+      "MsgOut": "common_list*mineId#矿山类型&&uin#QQ号",
+      "End": "登;KEY"
+    },
+    "01-0----------------------------------------": {
+      "Task": 10
+    },
+    "02-2 查询 银矿山 详情": {
+      "Url": "{!nc}cgi_distant_mine",
+      "Post": "{ncs}&act=visit&fuin=416912990*\n&mineid=1304",
+      "Note": "铜矿山1级id = 1300   1300~1303  1到4级\n\r\n银矿山1级id = 1304   1304~1307  1到4级\n\r\n金矿山1级id = 1308   1308~1311  1到4级\n\r\n钛矿山1级id = 1312   1312~1315  1到4级\r\n\n财宝山1级id = 1316   1316~1319  1到4级",
+      "Msg": "member_list*idx#矿洞ID&&overTime#t",
+      "MsgOut": "member_list*idx#矿洞ID&&overTime#t",
+      "End": "登;KEY"
+    },
+    "02-3 查询 金矿山 详情": {
+      "Url": "{!nc}cgi_distant_mine",
+      "Post": "{ncs}&act=visit&fuin=384093256*&mineid=1308",
+      "Note": "铜矿山1级id = 1300   1300~1303  1到4级\n\r\n银矿山1级id = 1304   1304~1307  1到4级\n\r\n金矿山1级id = 1308   1308~1311  1到4级\n\r\n钛矿山1级id = 1312   1312~1315  1到4级\r\n\n财宝山1级id = 1316   1316~1319  1到4级",
+      "Msg": "member_list*idx#矿洞ID&&overTime#t",
+      "MsgOut": "member_list*idx#矿洞ID&&overTime#t",
+      "End": "登;KEY"
+    },
+    "02-4 查询 钛矿山 详情": {
+      "Url": "{!nc}cgi_distant_mine",
+      "Post": "{ncs}&act=visit&fuin=549308994\n&mineid=1312",
+      "Note": "铜矿山1级id = 1300   1300~1303  1到4级\n\r\n银矿山1级id = 1304   1304~1307  1到4级\n\r\n金矿山1级id = 1308   1308~1311  1到4级\n\r\n钛矿山1级id = 1312   1312~1315  1到4级\r\n\n财宝山1级id = 1316   1316~1319  1到4级",
+      "Msg": "member_list*idx#矿洞ID&&overTime#t",
+      "MsgOut": "member_list*idx#矿洞ID&&overTime#t",
+      "End": "登;KEY"
+    },
+    "03-0----------------------------------------": {
+      "Task": 10
+    },
+    "03-1 金矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=979899008&idx=2",
+      "Post": "{ncs}&mineList=38,28,21,13&mineid=1304",
+      "Note": "备注：\r\n1、ndestuin=QQ号&idx=矿洞ID\r\n2、nmineList=16,20,32,25(矿工ID)&mineid=矿洞类型\r\n3、3、铜矿1300＜银矿1304＜金矿1308＜钛矿1312＜财宝矿1316\r\n4、派遣的工人ID设置类似:1,2,3,4  输入修改即可",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-2 银矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=3270243917&idx=3",
+      "Post": "{ncs}&mineList=14,25,20,17&mineid=1304",
+      "Note": "备注：\r\n1、ndestuin=QQ号&idx=矿洞ID\r\n2、nmineList=16,20,32,25(矿工ID)&mineid=矿洞类型\r\n3、3、铜矿1300＜银矿1304＜金矿1308＜钛矿1312＜财宝矿1316\r\n4、派遣的工人ID设置类似:1,2,3,4  输入修改即可",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-3 银矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=3316054446&idx=2",
+      "Post": "{ncs}&mineList=32,11,7,16&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-4 矮人敢死队": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=676846170&idx=3",
+      "Post": "{ncs}&mineList=4,2,3,1&mineid=1312",
+      "Note": "备注：\r\n1、ndestuin=QQ号&idx=矿洞ID\r\n2、nmineList=16,20,32,25(矿工ID)&mineid=矿洞类型\r\n3、3、铜矿1300＜银矿1304＜金矿1308＜钛矿1312＜财宝矿1316\r\n4、派遣的工人ID设置类似:1,2,3,4  输入修改即可",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-5 四星队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=2758960859&idx=2",
+      "Post": "{ncs}&mineList=23,24,36,50&mineid=1304",
+      "Note": "备注：\r\n1、ndestuin=QQ号&idx=矿洞ID\r\n2、nmineList=16,20,32,25(矿工ID)&mineid=矿洞类型\r\n3、3、铜矿1300＜银矿1304＜金矿1308＜钛矿1312＜财宝矿1316\r\n4、派遣的工人ID设置类似:1,2,3,4  输入修改即可",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-6 剩余队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=821290909&idx=3",
+      "Post": "{ncs}&mineList=5,41,19,10&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-7 随机队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=545528229&idx=3",
+      "Post": "{ncs}&mineList=4,3,2,1&mineid=1312",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "03-8 随机队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=545528229&idx=2",
+      "Post": "{ncs}&mineList=24,23,5,10&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-0----------------------------------------": {
+      "Task": 10
+    },
+    "04-1 矮人敢死队": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=842203161&idx=3",
+      "Post": "{ncs}&mineList=4,3,2,1&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-2 矮人银矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=2287639030&idx=2",
+      "Post": "{ncs}&mineList=7,20,5,10&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-3 银矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=359968664&idx=3",
+      "Post": "{ncs}&mineList=25,13,32,11&mineid=1304",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-4 银矿队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=2860457649&idx=3",
+      "Post": "{ncs}&mineList=14,28,38,16&mineid=1308",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-5 四星队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=137047994&idx=2",
+      "Post": "{ncs}&mineList=23,36,17,50&mineid=1308",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-6 剩余四五星队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=2529351046&idx=3",
+      "Post": "{ncs}&mineList=41,19,24,21&mineid=1308",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-7 随机队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=1097405039&idx=3",
+      "Post": "{ncs}&mineList=5,7,10,11&mineid=1308",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "04-8 随机队伍": {
+      "Url": "{!nc}cgi_distant_mine?act=dispatch&type=1&destuin=623338&idx=3",
+      "Post": "{ncs}&mineList=16,25,20,32&mineid=1308",
+      "Note": "1蓝2黄3绿   4紫  5红  7农小鱼  10金矮人   11农小鸿    13鱼哥   14农壮壮   16摇滚工\r\n17实习妹  19福爷爷   20福妞妞  21醉汉   23小学妹   24万人迷   25唐斌   27福奶奶\r\n28福胖胖   29福约翰  32福舅舅  36金鼠王  38小忍者  41瓦力   43小公主  49铜女王\r\n50福牛",
+      "Msg": "direction;ecode#抢占成功！",
+      "End": "登;key;0",
+      "Cycle": -1,
+      "Task": 10
+    }
+  }
+}

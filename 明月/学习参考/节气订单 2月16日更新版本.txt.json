@@ -1,0 +1,485 @@
+{
+  "节气订单 2月16日更新版本": {
+    "00-00 激活并领取每日种子": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=9",
+      "Note": "作者QQ：709422484",
+      "Msg": "ecode",
+      "Time": "1:00,2:00",
+      "End": "登;K;{88-00}"
+    },
+    "00-01 一键种植(前20块地专门种节气种子)": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_plant?mod=farmlandstatus&act=planting&&g_tk",
+      "Post": "{NC}&&uIdx&&uinY&ownerId={Id}&place={str:0~19}&cId={*:5901,5902,5900,5891}",
+      "Note": "cId=种子ID \r\n\r\nplace=0~19 表示前20块地",
+      "Msg": "code",
+      "MsgOut": "code",
+      "Time": "3600",
+      "End": "系统繁忙;不足"
+    },
+    "00-02 查看背包内新版种子数量": {
+      "Url": "/farm.qzone.qq.com/cgi-bin/cgi_farm_getuserseed?mod=repertory",
+      "Post": "act=getUserSeed",
+      "Msg": "cId==5901||cId==5902||cId==5900||cId==5891??cName#★&&amount#数量;@一个新种子都没有;direction;ecode",
+      "MsgOut": "cId==5901||cId==5902||cId==5900||cId==5891??cName#★&&amount#数量;@一个新种子都没有;direction;ecode",
+      "End": "登;K"
+    },
+    "00-03 查看仓库种新版种子果实数量": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_getusercrop?f=1",
+      "Msg": "cId==5901||cId==5902||cId==5900||cId==5891??cName#★&&amount#仓库果实数量;@啥果实都没有;direction;ecode",
+      "MsgOut": "cId==5901||cId==5902||cId==5900||cId==5891??cName#★&&amount#仓库果实数量;@啥果实都没有;direction;ecode",
+      "End": "登;K"
+    },
+    "00-04 查看当前9个订单的种类（0代表非特殊订单，1代表金币订单，2代表点券订单，3代表节气点订单）": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1000",
+      "End": "登;K"
+    },
+    "00-05 查看当前9个订单所需果实id（5901代表白鹤洞，5902代表吴钩剑，5900代表陈塘关，5891代表遁龙柱）": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "登;K"
+    },
+    "00-06 查看今日已刷出特殊订单次数": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "specialcount#今日已刷出特殊订单次数",
+      "MsgOut": "specialcount#今日已刷出特殊订单次数",
+      "Time": "1000",
+      "End": "登;K"
+    },
+    "00-07 偷好友种子(请查看备注)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_steal_v2?",
+      "Post": "mod=farmlandstatus&act=scrounge&place={Str:0~19}&ownerId={*:此处填UID，不是填QQ}",
+      "Note": "place={*:0~19}为偷前20块地  ownerId 为Uid，不是QQ\r\n\r\n建议一个小号前10块地专门种节气种子，然后此项代码设置place={Str:0~9}&ownerId=小号Uid 的话，100%能够偷到种子",
+      "Msg": "code",
+      "Time": "1800",
+      "End": "远程服务器",
+      "Cycle": 5
+    },
+    "00-08 查看背包有机化肥数量": {
+      "Url": "{!ncf}cgi_farm_getuserseed?mod=repertory&act=getUserSeed",
+      "Post": "{ncs}",
+      "Msg": "tId>29&&tId<34??tName&&amount#数量;@0;direction;ecode",
+      "MsgOut": "tId>29&&tId<34??tName&&amount#数量;@0;direction;ecode",
+      "End": "登;K"
+    },
+    "00-09 指定土地施肥": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_plant?mod=farmlandstatus&act=fertilize&&g_tk",
+      "Post": "{nc}&&uIdx&&uinY&__gact=1007002&ownerId={Id}&place={*:0~23}&tId=32",
+      "Note": "1=施肥成功\r\nplace=0~19地号\r\ntId=化肥ID\r\n1=普通化肥/2=高速化肥/3=极速化肥/7=飞速化肥\r\n30=普通有机化肥/31=高速有机化肥/32=急速有机化肥/33=飞速有机化肥\r\n36=高速点卷化肥/37=急速点卷化肥/38=飞速点卷化肥",
+      "Msg": "code",
+      "MsgOut": "code",
+      "End": "登;K",
+      "Task": 20
+    },
+    "00-10 查看向日葵积分": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=9&&g_tk",
+      "Post": "{ncs}",
+      "Msg": "score",
+      "MsgOut": "score#向日葵积分",
+      "Time": "60",
+      "End": "登;K;已;x"
+    },
+    "00-11 领向日葵奖励": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=18&id={*:1~6}",
+      "Note": "..\r\nid=1~6  需周积分达到  200/600/1000/1500/2500/5000",
+      "Msg": "direction;pkg??;itemTip",
+      "MsgOut": "direction;pkg??;itemTip",
+      "Time": "300",
+      "End": "登;积分不足",
+      "Task": 20
+    },
+    "00-12 收获29块土地": {
+      "Uins": "3354677816,3315185510,2432662031,1639606380,671065975,2391769823,3351382242,1289699382",
+      "Url": "{!nc}cgi_farm_plant?mod=farmlandstatus&act=harvest",
+      "Post": "{ncs}&&ownerId&place={Str:0~29}",
+      "Msg": "code",
+      "MsgOut": "code",
+      "Time": "1800",
+      "End": "系统繁忙;1",
+      "Cycle": 2,
+      "Task": 11
+    },
+    "00-99": {
+      "Task": 20
+    },
+    "01-00==========以下为刷新订单==========": {},
+    "01-01 保留所有特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1200",
+      "End": "{msg:xh:0}>0{88-01}"
+    },
+    "01-02 保留奖励点券和节气点的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1000",
+      "End": "{msg:xh:0,1}>0{88-02}"
+    },
+    "01-03 只保留奖励点券的特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,3}>0{88-03}"
+    },
+    "01-04 只保留奖励节气点的特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,2}>0{88-04}"
+    },
+    "01-05 只留白鹤洞的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "{msg:xh:5902,5900,5891}>0{88-05}"
+    },
+    "01-06 只留吴钩剑的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "{msg:xh:5901,5900,5891}>0{88-06}"
+    },
+    "01-07 只留陈塘关的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "{msg:xh:5901,5902,5891}>0{88-07}"
+    },
+    "01-08 只留遁龙柱的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "{msg:xh:5902,5900,5901}>0{88-08}"
+    },
+    "01-09 刷新所有订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "1200",
+      "End": "{88-09}"
+    },
+    "01-10 保留阳光值系数>10的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,2,3,4,5,6,7,8,9,10}>0{88-10}"
+    },
+    "01-11 保留阳光值系数>11的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,2,3,4,5,6,7,8,9,10,11}>0{88-11}"
+    },
+    "01-12 保留阳光值系数>12的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,2,3,4,5,6,7,8,9,10,11,12}>0{88-12}"
+    },
+    "01-13 保留阳光值系数>13的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "Time": "1200",
+      "End": "{msg:xh:0,1,2,3,4,5,6,7,8,9,10,11,12,13}>0{88-13}"
+    },
+    "01-99": {
+      "Task": 20
+    },
+    "02-00==========以下为提交订单==========": {},
+    "02-01 提交所有特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "End": "{msg:xh:1,2,3}>0{99-01}"
+    },
+    "02-02 提交奖励点券和节气点的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "Time": "1800",
+      "End": "{msg:xh:2,3}>0{99-02}"
+    },
+    "02-03 提交奖励点券的特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "End": "{msg:xh:2}>0{99-03}"
+    },
+    "02-04 提交奖励节气点的特殊订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*special",
+      "MsgOut": "tasks*special",
+      "End": "{msg:xh:3}>0{99-04}"
+    },
+    "02-05 只提交白鹤洞的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "End": "{msg:xh:5901}>0{99-05}"
+    },
+    "02-06 只提交吴钩剑的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "End": "{msg:xh:5902}>0{99-06}"
+    },
+    "02-07 只提交陈塘关的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "End": "{msg:xh:5900}>0{99-07}"
+    },
+    "02-08 只提交遁龙柱的订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "End": "{msg:xh:5891}>0{99-08}"
+    },
+    "02-09 提交所有订单": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*needId",
+      "MsgOut": "tasks*needId",
+      "Time": "300",
+      "End": "{99-09}"
+    },
+    "02-10 提交阳光值系数>10的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "End": "{msg:xh:11,12,13,14,15,16,17,18,19,20}>0{99-10}"
+    },
+    "02-11 提交阳光值系数>11的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "End": "{msg:xh:12,13,14,15,16,17,18,19,20}>0{99-11}"
+    },
+    "02-12 提交阳光值系数>12的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "End": "{msg:xh:13,14,15,16,17,18,19,20}>0{99-12}"
+    },
+    "02-13 提交阳光值系数>13的订单(阳光值系数越大，奖励阳光越多)": {
+      "Url": "/nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?",
+      "Post": "act=1",
+      "Msg": "tasks*sunRatio",
+      "MsgOut": "tasks*sunRatio",
+      "End": "{msg:xh:14,15,16,17,18,19,20}>0{99-13}"
+    },
+    "02-99": {
+      "Task": 20
+    },
+    "77-00==========以下不执行==========": {},
+    "88-00 每日领取节气种子@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=10&&g_tk",
+      "Post": "{ncs}",
+      "Msg": "pkg??;;direction",
+      "MsgOut": "pkg??;;direction",
+      "End": "登;K;{00-10}"
+    },
+    "88-01 刷新1@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-02 刷新2@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-03 刷新3@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,3}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-04 刷新4@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,2}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-05 刷新5@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:5902,5900,5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-06 刷新6@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901,5900,5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-07 刷新7@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901,5902,5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-08 刷新8@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901,5902,5900}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-09 刷新9@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901,5902,5900,5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-10 刷新10@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,2,3,4,5,6,7,8,9,10}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-11 刷新11@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,2,3,4,5,6,7,8,9,10,11}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-12 刷新12@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,2,3,4,5,6,7,8,9,10,11,12}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "88-13 刷新13@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=3&g_tk",
+      "Post": "{ncs}&task={msg:xh:0,1,2,3,4,5,6,7,8,9,10,11,12,13}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-00==========以下不执行==========": {},
+    "99-01 提交1@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:1,2,3}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-02 提交2@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:2,3}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-03 提交3@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:2}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-04 提交4@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:3}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-05 提交5@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-06 提交6@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:5902}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-07 提交7@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:5900}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-08 提交8@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-09 提交9@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:5901,5902,5900,5891}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-10 提交10@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:11,12,13,14,15,16,17,18,19,20}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-11 提交11@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:12,13,14,15,16,17,18,19,20}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-12 提交12@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:13,14,15,16,17,18,19,20}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    },
+    "99-13 提交13@": {
+      "Url": "nc.qzone.qq.com/cgi-bin/cgi_farm_seedhb?act=2&g_tk",
+      "Post": "{ncs}&task={msg:xh:14,15,16,17,18,19,20}",
+      "Msg": "pkg??;direction",
+      "End": "登;K"
+    }
+  }
+}

@@ -1,0 +1,991 @@
+{
+  "※※※老农梦境-全自动处理": {
+    "00-000-1 代码介绍【查看此项1】": {
+      "Note": "此代码整体逻辑：1.每日激活--2.激活抽卡--3.领取贵族礼包--4.领取土地--5.领取饲养场--6.升级武将(前往02-21修改武将id)--7.添加一个兵(用于首领)--8.处理首领每日--9.练兵(三种兵全部最大值)--10.一键补兵--11.处理奇遇所有--12.处理山寨--13.学府战斗系列学习--14.领取每日任务奖励--15.继续挑战山寨---为防止频繁，一部分代码会延迟5s左右处理\r\n本代码属于私人定制，有疑问或者特殊需求请联系8386069",
+      "Task": 10
+    },
+    "00-000-2 代码版本介绍【查看此项2】": {
+      "Note": "2.4版本：修复死循环，修改每项执行间隔\r\n2.2版本：增加一键升星功能。\r\n2.1版本：增加一键开启背包和一键抽卡功能。\r\n2.0版本：优化执行逻辑，避免重复处理山寨导致消耗兵力，修复任务完成后不领取问题",
+      "Task": 10
+    },
+    "00-001 【一键】全自动处理任务【执行此项】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=index",
+      "Note": "执行此项即可自动完成每日任务\r\n每日激活一次，否则会提示地图错误\r\n其他建筑不能超过大厅等级\r\n查看粮食等道具可执行\"查看背包\"与\"查看学府\"项",
+      "Msg": "halllv#大厅等级&&schoollv#学府等级&&fieldlv#田地等级&&feedlv#饲养场等级",
+      "MsgOut": "halllv#大厅等级&&schoollv#学府等级&&fieldlv#田地等级&&feedlv#饲养场等级",
+      "Time": "00:20",
+      "End": "登;KEY;点;{01-001}",
+      "Today": 2,
+      "Task": 10
+    },
+    "00-002 【一键】开启所有道具": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "16=征兵令\t78=紫技能碎片包\t80=初级加速包\t81=初级资源包\t82=中级加速包\t83=山寨加速包",
+      "Msg": "rep*id==16??id&&num;rep*id==78??id&&num;rep*id==80??id&&num;rep*id==81??id&&num;rep*id==82??id&&num;rep*id==83??id&&num;@无",
+      "MsgOut": "rep*id==16??id&&num;rep*id==78??id&&num;rep*id==81??id&&num;rep*id==82??id&&num;rep*id==83??id&&num;@无",
+      "End": "登;无;繁;{99-027}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "00-003 【一键】抽卡": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "执行此项前先激活{01-001}，或者先执行{00-001-1}",
+      "Msg": "rep*id==17??num#英;rep*id==18??num#结;rep*id==19??num#启;@无",
+      "MsgOut": "rep*id==17??num#英;rep*id==18??num#结;rep*id==19??num#启;@无",
+      "End": "无;英{01-004};结{01-003};启{01-002}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "00-008 查看贵族等级": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=7",
+      "Note": "建筑加速特权公式(单位:分种)：n+5，n=贵族等级\r\n根据贵族等级修改【升级】标志代码的跳转条件，数字的单位为秒，转换单位后修改并保存。\r\n由于代码不能输出进程的剩余时间，所以免费加速功能有点鸡肋，可帮助玩家度过前期繁琐的升级(可秒升14级)----不会修改代码可直接无视介绍！",
+      "Msg": "ecode#lv&&score#积分",
+      "MsgOut": "ecode#lv&&score#积分",
+      "End": "登;KEY;点",
+      "Task": 10
+    },
+    "00-009 领取贵族礼包": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=9",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;点;{99-003}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "00-010 查看+领取--【新手任务】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=3",
+      "Note": "自动跳转99-005，做完一个任务就执行一次",
+      "Msg": "draw",
+      "MsgOut": "draw",
+      "End": "登;KEY;繁;{99-005}",
+      "Task": 10
+    },
+    "00-011 初入老农梦境[查+领(100启航帖)]": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=5",
+      "Note": "特别注意：领取前先激活{01-001}，否则可能存在启航贴不到账问题！！！\r\n完成任务的标准输出：10，500，5，1，5\r\n只要输出的对应数字大于等于即完成【为上述数字的倍数可再次领取】---任务详细如下：\r\n1-累计使用10次骰子  2-累计收取500士兵  3-学府学习技能5次  4-勇闯山寨通过第一关(后续每五层)",
+      "Msg": "v_1&&v_2&&v_3&&v_4",
+      "MsgOut": "v_1&&v_2&&v_3&&v_4",
+      "End": "登;KEY;繁;{99-012}",
+      "Task": 10
+    },
+    "00-101 【升级】田地": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfield&opt=2&fieldid=1",
+      "Note": "开循环-1 自动处理,小于5分钟可直接加速(300s),否则需要粮票，代码会自动停止，如果不是贵族，就不要修改【升级】标志代码\r\n无法返回剩余的时间，所以想用秒加速的话，建议自己从返回的总时间自己计算剩余时间，然后再去执行最下面的相关秒加速，看不懂代码的话，建议不要搞了，误操作可能会花费粮票！！\r\n所有有进度条的升级都是一样的情况，不过多阐述！",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;升|不|满;繁;<301{99-901};>301",
+      "Task": 10
+    },
+    "00-201 【升级】饲养场": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfeed&opt=2&fieldid=1",
+      "Note": "开循环-1,小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁;不|升|满;<301{99-903};>301",
+      "Task": 10
+    },
+    "00-301 【升级】学府": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modschool&opt=2",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁;不|升|满;<301{99-920};>301",
+      "Task": 10
+    },
+    "00-401 【升级】英雄大厅": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhall&opt=2",
+      "Note": "st=建筑升级所需要的时间，单位秒\r\n小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁;不|升|满;<301{99-910};>301",
+      "Task": 10
+    },
+    "00-501 【升级】一键升级所有[训练营]": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=2&c_id=0",
+      "Note": "本代码为升级近战兵营，且会自动跳转，达到升级三个兵营的效果。若升级单个兵营，可单独执行某个项(删除所有结束跳转)\r\nst=建筑升级所需要的时间，单位秒\r\n小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁|没|不|满;<301{99-930};>301{99-022};{99-022}",
+      "Task": 10
+    },
+    "00-999 【一键加速】【看备注!】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "用于需要大量加速卡场景，有多少用多少(清空加速卡)，修改输出id用于不同类型加速卡！！修改底部的对应代码，达到不同用途ps：不会改就不用动了，训练兵加速移步最底部代码！\r\n修改跳转名！例如：99-902=田地\t99-903=饲养场\t99-911=英雄大厅\t99-921=学府\r\n加速卡id：21=24h建筑\t22=12h建筑\t23=8h建筑\t24=1h建筑\t25=5m建筑\r\n31=24h训练\t32=12h训练\t33=8h训练\t34=1h训练\t35=5m训练\r\n41=24h通用\t42=12h通用\t43=8h通用\t44=1h通用\t45=5m通用\r\n51=24h学府\t52=12h学府\t53=8h学府\t54=1h学府\t55=5m学府",
+      "Msg": "rep*id==24??num&&id",
+      "MsgOut": "rep*id==24??num&&id",
+      "End": "登;KEY;不;繁;,{99-911}",
+      "Task": 10
+    },
+    "01-000 ---------主界面功能列表---------": {
+      "Task": 10
+    },
+    "01-001 【召唤】---激活【注意】": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=index",
+      "Note": "领取任务前执行一次，否则可能存在不到账问题！\r\n输出为今日已开启次数，每种每日上限9999\r\n启航，结义，英雄",
+      "Msg": "l_3&&l_2&&l_1",
+      "MsgOut": "l_3&&l_2&&l_1",
+      "End": "登;KEY;{00-009}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "01-002 【召唤】---1【梦境启航】": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=draw&type=1&pool=3",
+      "Note": "type=1===单抽    type=2===五连抽\r\n剩余:门票数量",
+      "Msg": "s&&toolnum#剩余",
+      "MsgOut": "s&&toolnum#剩余",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "01-003 【召唤】---2【桃园结义】": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=draw&type=1&pool=2",
+      "Note": "type=1===单抽    type=2===五连抽\r\n每抽十次得整卡---每抽20次得橙将整卡",
+      "Msg": "s&&toolnum#剩余&&l_2#累计次数",
+      "MsgOut": "s&&toolnum#剩余&&l_2#累计次数",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "01-004 【召唤】---3【英雄崛起】": {
+      "Url": "{!mc}cgi_pasture_kingdoms_activity",
+      "Post": "{mcs}&act=draw&type=1&pool=1",
+      "Note": "type=1===单抽    type=2===五连抽",
+      "Msg": "s&&toolnum#剩余",
+      "MsgOut": "s&&toolnum#剩余",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "01-201 【奇遇】---查看+前进+领取": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=enter",
+      "Msg": "ldices#骰子数&&score#积分",
+      "MsgOut": "ldices#骰子数",
+      "End": "登;KEY;不;{99-007}",
+      "Task": 10
+    },
+    "01-300 【编队】---查看编队信息": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modteam&opt=3&tindex=0",
+      "Note": "tindex=队伍编号(0主队,1,2,3)\r\n顺序输出为第一、二、三位置\r\n兵种=1：近战兵\t兵种=1001：骑士兵\t兵种=2001",
+      "Msg": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "MsgOut": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-301 【编队】---自定义编队": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modteam&opt=1&tindex=0&team=21,1,{*:[msg]}|24,1001,{*:[msg]}|19,2001,{*:[msg]}",
+      "Note": "tindex=队伍编号(0主队,1,2,3)\r\n兵种=1：近战兵\t兵种=1001：骑士兵\t兵种=2001：远程兵\r\nteam=前面的数为武将id，中间的数为兵种id，后面的数为小兵数量(无需修改)\r\n只需要设置武将id和兵种id即可，配置完成后保存代码，执行01-302即自动补兵",
+      "Msg": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "MsgOut": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "End": "登;KEY;无{+6};不;繁;,{01-201}",
+      "Task": 10
+    },
+    "01-302 【编队】一键补兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Note": "设置好阵容后，再进行补兵！\r\n输出=无匹配项-不用管，正常情况，处理完会自动停止，之后可执行01-300查看当前编队信息\r\nps：如果武将对应的兵种配置错误，会一直返回无匹配项(已做限制，6次无结果会停止运行)，由于没有武将表，建议去游戏内查看武将的对应兵种。也可按本代码的逻辑(只搞商店内的三个武将)无需修改",
+      "Msg": "camp*num",
+      "MsgOut": "camp*num",
+      "End": "登;KEY;繁;{01-301}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "01-401 【背包】---查看道具": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "查看所有道具，下方的输出修改为:rep*id>0??id#※id&&num\r\n2=鸡蛋\t3=鸡腿\t4=牛奶\t9=粮食\t10=木材\t12=米酒\t13=高粱酒\t14=女儿红\r\n16=征兵令\t17=英雄帖\t18=结义帖\t19=启航帖\t24=1h建筑\r\n25=5m建筑\t34=1h训练加速\t35=5m训练\t44=1h加速\t45=5m加速\r\n54=1h学府\t55=5m学府\t78=紫色技能包\t81=初级资源包\t82=中级加速包\r\n83=山寨加速包",
+      "Msg": "rep*id==24??num",
+      "MsgOut": "rep*id==24??num",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-402 【背包】---使用道具": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=1&num=10&id=16",
+      "Note": "id如下(待补充):\r\n16=征兵令\t78=紫技能碎片包\t81=初级资源包\t82=中级加速包\t83=山寨加速包",
+      "Msg": "s;ecode",
+      "MsgOut": "s;ecode",
+      "End": "登;KEY;不;繁;-105;-1",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "01-403 【背包】---查看将魂道具【备用】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "查看指定道具，下方的输出修改为:rep*id==0??num\r\n将魂id-10000即为对应的武将id，十个即可合成(合成所用的id为将魂id-10000，详见\"02-61 将魂合成\")\r\n例如：武将id=24，那么对应的将魂id=10024",
+      "Msg": "rep*id>10000??id#※id&&num#数量",
+      "MsgOut": "rep*id>10000??id#※id&&num#数量",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-501 【任务】---查看+领取": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=1",
+      "Note": "任务完成标准=1,50,10,1,1,1,1\r\n输出的数字按顺序相对应且大于等于即完成\r\n1.每日登录---2.收取50个兵---3.使用10次普通骰子---4.英雄升级一次\r\n5.田地收取一次---6.饲养场收取一次---7.通过一关勇闯山寨",
+      "Msg": "id>0??num",
+      "MsgOut": "id>0??num",
+      "End": "登;KEY;繁;{99-006}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "01-601 【勇闯山寨】---查看": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=dreamland&opt=1",
+      "Note": "每天30次挑战",
+      "Msg": "ctimes",
+      "MsgOut": "ctimes",
+      "End": "不;繁;0{01-602};>0{04-03}",
+      "Task": 10
+    },
+    "01-602 【勇闯山寨】---挑战": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=dreamland&opt=2",
+      "Note": "自动回复70%的兵力，每天30次挑战次数\r\n每日0点重置，并自动降低五层\r\n返回的数字为已挑战次数(也是输的意思)\r\n返回奖励(就是赢的意思)",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "次|,{04-03}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "01-603 【勇闯山寨】---查看[备用]": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=dreamland&opt=1",
+      "Note": "每天30次挑战",
+      "Msg": "ctimes#挑战次数&&level#层&&tk76#奇遇币",
+      "MsgOut": "ctimes#挑战次数&&level#层&&tk76#奇遇币",
+      "End": "不;繁",
+      "Task": 10
+    },
+    "01-701 【集市】---查看": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modshop&shopid=2&opt=1",
+      "Note": "shopid=2(探险商店)，=1(杂货铺)。----需要修改下方过滤配合使用\r\n输出过滤改成：limit（查看购买数量）",
+      "Msg": "tk_76#奇遇币&&lp#粮票&&jz#金钻&&dq#点券",
+      "MsgOut": "tk_76#奇遇币&&lp#粮票&&jz#金钻&&dq#点券",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-702 【集市】--探险商店---【购买】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modshop&shopid=2&opt=2&num=20&index=219",
+      "Note": "num=购买数量，index=物品id    出现异常可能为限购\r\n下方为id+物品+价格\r\n201=s+精灵---2w  202=刘岱---200  204=陶谦---200  205=斐元绍---200\r\n206=结义帖---600  207=英雄帖---150  208=书页*1000---100   209=书页*1000---80\r\n210=鸡腿*5---50  211=鸡腿*5---45  212=粮食*50w---500  212=木材*1000---20\r\n213=1h加速---50  214=1h加速---45  215=紫技能碎片包---300  216=高粱酒*5---100\r\n217=高粱酒*10---160  219=点券*5k---250  220=精灵升级药水(中)*10---900",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-703 【集市】--杂货铺---【购买】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modshop&shopid=1&opt=2&num=1&index=",
+      "Note": "num=购买数量，index=物品id    出现异常可能为限购\r\n下方为id+物品+价格(默认粮票)\r\n1=结义帖---60   2=1h加速---5   3=5min加速---2   4=粮食*10w---10\r\n5=木材*5k---10   6=24h加速---90  7=鸡腿*1---1   8=高粱酒*5---10\r\n9=英雄帖*1---1w点券(周限10次)  10=紫技能碎片包*1---5k金钻(周限10次)",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "01-801 【首领】查看+挑战+领取每日奖励": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=weekboss&opt=1",
+      "Note": "每天可挑战3次\r\n礼包状态为0=未领取，1=已领取\r\n每日执行此项即可",
+      "Msg": "level#Boss等级&&d#伤害&&used#次数&&l#礼包状态",
+      "MsgOut": "level#Boss等级&&d#伤害&&used#次数&&l#礼包状态",
+      "End": "登;KEY;不;繁;{99-017}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "01-804 【首领】领取排行奖励": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=weekboss&opt=4",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "02-00 ---------英雄大厅---------": {
+      "Task": 10
+    },
+    "02-01 一键升星": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Msg": "ability>0??id",
+      "MsgOut": "ability>0??id",
+      "End": "登;KEY;繁;{99-037}",
+      "Task": 10
+    },
+    "02-11 查看英雄": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "我没有集齐所有武将，只展示部分武将id\r\n6=董旻\t7=魏延\t17=李傕\t18=张济\t19=刘岱\t20=赵蛾\t21=陶谦\t22=淳于琼      24=斐元绍\r\n武将id+10000即为将魂id，见01-403 【背包】---查看将魂道具【备用】\r\n输出过滤：quality==2??id（按品质输出id,1=紫,2=橙）     ability>5400??id&&ability（指定战力范围输出）\r\nlevel>0??id#id&&level#lv&&ability#战力（输出所有）",
+      "Msg": "ability>5400??id#id&&ability&&level",
+      "MsgOut": "ability>5400??id&&ability&&level",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "02-21 英雄升级": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=2&up_type=4&hid=24",
+      "Note": "up_type=4(升一级),up_type=5(升十级)\r\nhid=英雄id\r\n21=陶谦 24=斐元绍 19=刘岱",
+      "Msg": "ability#战力&&level#lv&&nextexp#下一级所需经验",
+      "MsgOut": "ability#战力&&level#lv&&nextexp#下一级所需经验",
+      "End": "登;KEY;不;繁;{99-019}",
+      "Task": 10
+    },
+    "02-31 英雄升星": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=3&hid=24",
+      "Note": "hid=英雄id\r\n21=陶谦 24=斐元绍 19=刘岱",
+      "Msg": "star;direction;ecode",
+      "MsgOut": "star;direction;ecode",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "02-41 查看英雄技能": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=1",
+      "Note": "输出技能id和技能等级\r\n21=陶谦 24=斐元绍 19=刘岱",
+      "Msg": "id==??skill*skillid",
+      "MsgOut": "id==??skill*skillevel",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "02-42 技能升级": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=4&skill_op=4&skill_pos=0&skill_id=&hid=",
+      "Note": "skill_id=技能id,hid=英雄id",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;KEY;不;繁",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "02-43 学习技能": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=4&skill_opt=1&skill_id=&hid=",
+      "Note": "skill_id=技能id,hid=英雄id，十个碎片可学习",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "02-61 将魂合成": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=5&hid=",
+      "Note": "先执行\"01-403 【背包】---查看将魂道具【备用】\r\n代码不能区分碎片，结果以返回值为准！！\r\n例如：将魂id=10010，则上方的hid=10即可",
+      "Msg": "ability#战力",
+      "MsgOut": "ability#战力",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "03-00 ---------训练营---------": {
+      "Task": 10
+    },
+    "03-01 【查看】兵-库存数量": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Note": "camp*num#数量，输出顺序为：近-骑-远",
+      "Msg": "camp*num",
+      "MsgOut": "camp*num",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "03-02 【查看】指定兵种信息": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Note": "修改下方campid=，近战=0，骑=1000，远=2000\r\n替换输出过滤：campid>=0??camplevel#等级&&num#数量&&cap#容量max（所有兵种信息）",
+      "Msg": "campid==1000??camplevel#等级&&num#数量&&cap#容量max",
+      "MsgOut": "campid==1000??camplevel#等级&&num#数量&&cap#容量max",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "03-31 【一键收取+一键训练】---近战兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=6&c_id=0",
+      "Note": "一键处理收取+训练！！根据兵营等级，修改【训练】标志代码-保存即可\r\n对此项添加定时即可自动处理\r\n也可单独处理(删除跳转)",
+      "Msg": "trainmax",
+      "MsgOut": "trainmax",
+      "End": "登;KEY;繁;未完成{03-32};{99-008}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "03-32 【收取】---骑士兵@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=6&c_id=1000",
+      "Msg": "trainmax",
+      "MsgOut": "trainmax",
+      "End": "登;KEY;繁;未完成{03-33};{99-009}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "03-33 【收取】---远程兵@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=6&c_id=2000",
+      "Msg": "trainmax",
+      "MsgOut": "trainmax",
+      "End": "登;KEY;繁;{99-010}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "03-34 【训练】---所有兵@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=1&c_id=0&opt=5&s_num={msg}",
+      "Note": "s_num==想要训练的数量\r\n一级max=100\t2级max=300\t3级max=500\t4级max=800",
+      "Msg": "trainid#队列id",
+      "MsgOut": "trainid#队列id",
+      "End": "登;KEY;繁|没|不;{03-32}",
+      "Task": 10
+    },
+    "03-35 【训练】---骑士兵@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=1001&c_id=1000&opt=5&s_num={msg}",
+      "Note": "s_num==想要训练的数量\r\n一级max=100\t2级max=300\t3级max=500",
+      "Msg": "trainid#队列id",
+      "MsgOut": "trainid#队列id",
+      "End": "登;KEY;繁|没|不;{03-33}",
+      "Task": 10
+    },
+    "03-36 【训练】---远程兵@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=2001&c_id=2000&opt=5&s_num={msg}",
+      "Note": "s_num==想要训练的数量\r\n一级max=100\t2级max=300\t3级max=500",
+      "Msg": "trainid#队列id",
+      "MsgOut": "trainid#队列id",
+      "End": "登;KEY;繁|没|不;{01-302}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "04-00 ---------学府---------": {
+      "Task": 10
+    },
+    "04-01 查看学府": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modschool&opt=1",
+      "Msg": "level#lv&&grass#粮食&&learntime#书页",
+      "MsgOut": "level#lv&&grass#粮食&&learntime#书页",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "04-02 辅助系列-升级": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcourse&opt=2&type=2&course=",
+      "Note": "course=课程编号（1-农业，2-饲养，3-探索）\r\n下方输出st为等待时间(单位秒)",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁|满",
+      "Task": 10
+    },
+    "04-03 战斗系列-升级": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcourse&opt=2&type=1",
+      "Note": "下方输出st为等待时间(单位秒)",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;KEY;繁;{01-501}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "04-05 学府---队列加速【备用】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcourse&opt=4&type=1&accnum=1&accid=",
+      "Note": "type=1（战斗系列），2（辅助系列）\r\naccnum=使用加速卡的数量，accid=加速卡id\r\n可使用加速卡id：54=1h学府   55=5m学府   44=1h通用   45=5m通用",
+      "Msg": "ecode",
+      "MsgOut": "ecode",
+      "End": "登;KEY;已|没|不;繁;-1",
+      "Task": 10
+    },
+    "88-00 ---------备用@---------": {
+      "Task": 10
+    },
+    "88-01 【舍弃】---近战兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=1&opt=9&c_id=0&s_num=",
+      "Note": "s_num=想要舍弃的数量",
+      "Msg": "num#库存量",
+      "MsgOut": "num#库存量",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "88-02 【舍弃】---骑士兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=1001&opt=9&c_id=1000&s_num=",
+      "Note": "s_num=想要舍弃的数量",
+      "Msg": "num#库存量",
+      "MsgOut": "num#库存量",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "88-03 【舍弃】---远程兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&s_id=2001&opt=9&c_id=2000&s_num=",
+      "Note": "s_num=想要舍弃的数量",
+      "Msg": "num#库存量",
+      "MsgOut": "num#库存量",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "99-000 ---------特殊区域↓↓↓(查看本项)---------": {
+      "Note": "项名有@不建议手动处理，没有@可以手动处理并修改，详细情况可参考备注内容\r\n由于无法返回剩余的时间，所以想用秒加速的话，建议自己从\"队列信息\"返回的信息自己计算剩余时间，然后再去执行最下面的相关秒加速，看不懂代码的话，建议不要搞了，误操作可能会花费粮票！！\r\n所有有进度条的升级都是一样的情况，不过多阐述！",
+      "Task": 10
+    },
+    "99-001 奇遇战斗事件@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=fight&f_level=1",
+      "Msg": "result",
+      "MsgOut": "result",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "99-002 奇遇选择事件@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=randevent&opt=1&id=2",
+      "Msg": "score",
+      "MsgOut": "score",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "99-003 【领取饲养场】每日自动执行一次": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfeed&opt=5&feedid=1",
+      "Note": "代码已定时每天执行一次，可自行修改\r\n每小时一次，最多存48h",
+      "Msg": "addexpl",
+      "MsgOut": "addexpl",
+      "End": "登;KEY;繁;{99-004}",
+      "Task": 10
+    },
+    "99-004 【收粮食】每日自动执行一次": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfield&opt=5&feedid=1",
+      "Note": "代码已定时每天执行一次，可自行修改\r\n每分钟一次，最多存48h",
+      "Msg": "addgrass",
+      "MsgOut": "addgrass",
+      "End": "登;KEY;繁;{02-21}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-005 领取新手任务@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=4",
+      "Msg": "direction;ecode",
+      "MsgOut": "direction;ecode",
+      "End": "登;KEY;繁",
+      "Task": 10
+    },
+    "99-006 领取任务奖励1@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=0",
+      "Note": "完成6个任务即可领取特殊奖励",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-030}",
+      "Task": 10
+    },
+    "99-007 [奇遇]---前进@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=play&id=1",
+      "Note": "普通和高级均适用",
+      "Msg": "gridid==1001??gridtype;score",
+      "MsgOut": "gridid==1001??gridtype;score",
+      "End": "登;KEY;繁;=4{99-002};>49{99-001};不{99-011}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-008 近战中转@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Msg": "campid==0??trainmax",
+      "MsgOut": "campid==0??trainmax",
+      "End": "登;KEY;繁;{03-34}",
+      "Task": 10
+    },
+    "99-009 骑士中转@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Msg": "campid==1000??trainmax",
+      "MsgOut": "campid==1000??trainmax",
+      "End": "登;KEY;繁;{03-35}",
+      "Task": 10
+    },
+    "99-010 远程中转@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=moddata&opt=2",
+      "Msg": "campid==2000??trainmax",
+      "MsgOut": "campid==2000??trainmax",
+      "End": "登;KEY;繁;{03-36}",
+      "Task": 10
+    },
+    "99-011 【奇遇】---领取礼包@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=gift&g_index=1",
+      "Note": "所需积分:200/400/600/900",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "{99-024}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-012 领取初入老农梦境奖励1@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=6&id=1",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;繁;不{99-013}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-013 领取初入老农梦境奖励2@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=6&id=2",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;繁;不{99-014}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-014 领取初入老农梦境奖励3@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=6&id=3",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;繁;不{99-015}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-015 领取初入老农梦境奖励4@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=6&id=4",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;繁;不{99-016}",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-016 领取初入老农梦境奖励5@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=6&id=5",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "登;KEY;繁;不",
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-017 【首领】挑战[每日6-24开启]@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=weekboss&opt=2",
+      "Note": "周1和4=近战---周2和5=骑士---周3和6=远程---周日=混合\r\n克制关系：远程>近战>骑士>远程",
+      "Msg": "d#伤害",
+      "MsgOut": "d#伤害",
+      "End": "登;KEY;休息{03-31};已{99-018}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-018 【首领】领取每日奖励@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=weekboss&opt=3",
+      "Note": "挑战三次可领取",
+      "Msg": "items",
+      "MsgOut": "items",
+      "End": "登;KEY;{03-31}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-019 【编队】---补一个兵": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modteam&opt=1&tindex=0&team=21,1,1|24,1001,1|19,2001,1",
+      "Note": "tindex=队伍编号(0主队,1,2,3)\r\n兵种=1：近战兵\t兵种=1001：骑士兵\t兵种=2001：远程兵\r\nteam=前面的数为武将id，中间的数为兵种id，后面的数为小兵数量(无需修改)\r\n只需要设置武将id和兵种id即可，配置完成后保存代码，执行01-302即自动补兵",
+      "Msg": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "MsgOut": "heroid>0??heroid#武将&&num#兵&&soldie#兵种",
+      "End": "登;KEY;,{01-801}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-020 【勇闯山寨】---中转@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=dreamland&opt=1",
+      "Msg": "ctimes",
+      "MsgOut": "ctimes",
+      "End": "不;繁;<5{99-021};>4{04-03}",
+      "Task": 10
+    },
+    "99-021 【勇闯山寨】---挑战": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=dreamland&opt=2",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "次;,",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Cycle": -1,
+      "Task": 10
+    },
+    "99-022 [升级]---骑士[训练营]": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=2&c_id=1000",
+      "Note": "若升级单个兵营，可单独执行某个项(删除所有结束跳转)",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁|没|不;<301{99-931};>301{99-023};{99-023}",
+      "Task": 10
+    },
+    "99-023 [升级]---远程[训练营]": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=2&c_id=2000",
+      "Note": "若升级单个兵营，可单独执行某个项(删除所有结束跳转)",
+      "Msg": "st",
+      "MsgOut": "st",
+      "End": "登;KEY;繁|没|不;<301{99-932};>301",
+      "Task": 10
+    },
+    "99-024 【奇遇】---领取礼包2@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=gift&g_index=2",
+      "Note": "所需积分:200/400/600/900",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "{99-025}",
+      "Task": 10
+    },
+    "99-025 【奇遇】---领取礼包3@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=gift&g_index=3",
+      "Note": "所需积分:200/400/600/900",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "{99-026}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-026 【奇遇】---领取礼包4@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=gift&g_index=4",
+      "Note": "所需积分:200/400/600/900",
+      "Msg": "s",
+      "MsgOut": "s",
+      "End": "{01-601}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-027 使用道具@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfunc&opt=1&id={*:[msg]}&num={*:[msg]}",
+      "Msg": "s;ecode",
+      "MsgOut": "s;ecode",
+      "End": "登;KEY;不;繁",
+      "Task": 10
+    },
+    "99-030 领取任务奖励2@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=1",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-031}",
+      "Task": 10
+    },
+    "99-031 领取任务奖励3@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=2",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-032}",
+      "Task": 10
+    },
+    "99-032 领取任务奖励4@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=3",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-033}",
+      "Task": 10
+    },
+    "99-033 领取任务奖励5@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=4",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-034}",
+      "Task": 10
+    },
+    "99-034 领取任务奖励6@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=5",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-035}",
+      "Task": 10
+    },
+    "99-035 领取任务奖励7@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=6",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "{99-036}",
+      "Task": 10
+    },
+    "99-036 领取额外任务奖励@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modtask&opt=2&taskid=7",
+      "Msg": "limit",
+      "MsgOut": "limit",
+      "End": "不;繁|已;{99-020}",
+      "Sleep": 2000,
+      "Delay": 2000,
+      "Task": 10
+    },
+    "99-037 升星@@": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhero&opt=3&hid={*:[msg]}",
+      "Msg": "star;direction;ecode",
+      "MsgOut": "star;direction;ecode",
+      "End": "登;KEY;繁;不{+20},\"Cycle\":-1",
+      "Task": 10
+    },
+    "99-901 免费加速田地5分钟【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfield&opt=3&fieldid=1",
+      "Note": "小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "level",
+      "MsgOut": "level",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-902 【加速卡】田地加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfield&opt=4&feedid=1&accnum={*:[msg]}&accid={*:[msg]}",
+      "Note": "accid=加速道具id\taccnum=使用个数\r\n可使用加速卡()id：24=1h建筑   25=5m建筑   44=1h通用   45=5m通用",
+      "Msg": "et",
+      "MsgOut": "et",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-903 免费加速饲养场5分钟【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfeed&opt=3&fieldid=1",
+      "Note": "小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "level",
+      "MsgOut": "level",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-904 【加速卡】饲养场加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modfeed&opt=4&feedid=1&accnum={*:[msg]}&accid={*:[msg]}",
+      "Note": "accid=加速道具id\taccnum=使用个数\r\n可使用加速卡()id：24=1h建筑   25=5m建筑   44=1h通用   45=5m通用",
+      "Msg": "et",
+      "MsgOut": "et",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-910 免费加速英雄大厅5分钟【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhall&opt=3",
+      "Note": "st=建筑升级所需要的时间，单位秒",
+      "Msg": "level",
+      "MsgOut": "level",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-911 【加速卡】英雄大厅加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modhall&opt=4&accnum={*:[msg]}&accid={*:[msg]}",
+      "Note": "accid=加速道具id\taccnum=使用个数\r\n可使用加速卡()id：24=1h建筑   25=5m建筑   44=1h通用   45=5m通用",
+      "Msg": "et",
+      "MsgOut": "et",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-920 免费加速学府[建筑]5分钟【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modschool&opt=3&type=1",
+      "Note": "小于5分钟可直接加速(300s),否则需要粮票",
+      "Msg": "level",
+      "MsgOut": "level",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-921 【加速卡】学府[建筑]加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modschool&opt=4&accnum={*:[msg]}&accid={*:[msg]}",
+      "Note": "accid=加速道具id\taccnum=使用个数\r\n可使用加速卡id：24=1h建筑   25=5m建筑   44=1h通用   45=5m通用",
+      "Msg": "et",
+      "MsgOut": "et",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-930 免费加速近战[训练]【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=3&c_id=0",
+      "Note": "最低5分钟，根据贵族等级有调整。\r\n没法显示剩余时间，所以需要自己估算，否则会花费粮票！特别注意！",
+      "Msg": "camplevel#训练营等级",
+      "MsgOut": "camplevel#训练营等级",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-931 免费加速骑士[训练]【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=3&c_id=1000",
+      "Note": "最低5分钟，根据贵族等级有调整。\r\n没法显示剩余时间，所以需要自己估算，否则会花费粮票！特别注意！",
+      "Msg": "camplevel#训练营等级",
+      "MsgOut": "camplevel#训练营等级",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-932 免费加速远程[训练]【注意！】": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=3&c_id=2000",
+      "Note": "最低5分钟，根据贵族等级有调整。\r\n没法显示剩余时间，所以需要自己估算，否则会花费粮票！特别注意！",
+      "Msg": "camplevel#训练营等级",
+      "MsgOut": "camplevel#训练营等级",
+      "End": "登;KEY;繁|没",
+      "Task": 10
+    },
+    "99-933 【加速卡】兵营[训练]加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=7&accnum=1&accid=34&c_id={*:0,1000,2000}",
+      "Note": "accid=加速道具id\taccnum=使用个数\tc_id=兵种id--近战=0，骑=1000，远=2000\r\n可使用加速卡id：34=1h训练   35=5m训练   44=1h通用   45=5m通用\r\n可修改兵种id达到只加速一种兵的目的",
+      "Msg": "ts",
+      "MsgOut": "ts",
+      "End": "登;KEY;繁|无|已|没",
+      "Task": 10
+    },
+    "99-934 【加速卡】兵营[建筑]加速": {
+      "Url": "{!mc}cgi_pasture_kingdoms",
+      "Post": "{mcs}&act=modcamp&opt=4&accnum=1&accid=34&c_id={*:0,1000,2000}",
+      "Note": "accid=加速道具id\taccnum=使用个数\tc_id=兵种id--近战=0，骑=1000，远=2000\r\n可使用加速卡id：31=24h训练\t32=12h训练\t33=8h训练\t34=1h训练\t35=5m训练\r\n41=24h通用\t42=12h通用\t43=8h通用\t44=1h通用\t45=5m通用\r\n可修改兵种id达到只加速一种兵的目的",
+      "Msg": "ts",
+      "MsgOut": "ts",
+      "End": "登;KEY;繁|无|已|没",
+      "Task": 10
+    }
+  }
+}
